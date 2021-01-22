@@ -209,13 +209,18 @@ class GamessSurf():
             tempx.append(self.points[i][0])
             tempy.append(self.points[i][1])
             tempz.append(self.points[i][2])
-            if (i+1)%dim[0] == 0:
+            if (i+1)%dim[1] == 0:
                 x.append(tempx)
                 y.append(tempy)
                 z.append(tempz)
                 tempx =[]
                 tempy =[]
                 tempz =[]
+        if indexed_first == 1:
+            # Transpose to get ordering
+            x = np.transpose(x)
+            y = np.transpose(y)
+            z = np.transpose(z)
         return x, y, z
     
     def aspandas(self):
