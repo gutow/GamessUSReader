@@ -1,0 +1,5 @@
+k3d>=2.9.1
+matplotlib>=3
+pandas>=1.2
+numpy>=1.19
+jupyter>=1.0
