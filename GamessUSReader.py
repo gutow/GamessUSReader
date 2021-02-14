@@ -148,11 +148,11 @@ class GamessSurf():
             line=file.readline()
         file.close()
         atomnodict = dict(zip(atomnums,atomnames))
-        one = 'R_{'
+        one = '\\Delta R_{'
         one += atomnodict[atomsv1[0]]+'_{('+str(atomsv1[0])+')}'
         one += atomnodict[atomsv1[1]]+'_{('+str(atomsv1[1])+')}}'
         if len(atomsv2)==2:
-            two = 'R_{'
+            two = '\\Delta R_{'
             two += atomnodict[atomsv2[0]]+'_{('+str(atomsv2[0])+')}'
             two += atomnodict[atomsv2[1]]+'_{('+str(atomsv2[1])+')}}'      
         return one, two   
@@ -218,9 +218,9 @@ class GamessSurf():
                 tempz =[]
         if indexed_first == 1:
             # Transpose to get ordering
-            x = np.transpose(x)
-            y = np.transpose(y)
-            z = np.transpose(z)
+            x = np.array(np.transpose(x),np.float32)
+            y = np.array(np.transpose(y),np.float32)
+            z = np.array(np.transpose(z),np.float32)
         return x, y, z
     
     def aspandas(self):
@@ -287,7 +287,7 @@ class GamessSurf():
         ======
         plot: a k3d plot object containing the surface
         """
-        plot = k3d.plot(axes=[self.coor1+' (Ang)',self.coor2+' (Ang)','Energy (au)'])
+        plot = k3d.plot(axes=[self.coor1+' (Angs)',self.coor2+' (Angs)','Energy (au)'])
         surface = self.ask3dsurf()
         plot+=surface
         return plot
