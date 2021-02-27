@@ -1,5 +1,5 @@
 """
-Utilities for reading data from GamessUS .log files.
+Utilities for reading and displaying data from GamessUS .log files.
 * GamessSurf object loads data from ``RUNTYPE=SURFACE`` files.
 
 Jonathan Gutow <gutow@uwosh.edu>
@@ -16,7 +16,15 @@ class GamessSurf():
     
     ``.plot()`` will automatically generate a 2-D or 3-D plot as appropriate for the surface.
     The 3-D plots use k3d so only work in Jupyter notebooks, but they are live.
-    
+
+    Parameters
+    ==========
+    filepath: str containing the full path to the GamessUS .out (.log) file created by
+    a Surface calculation.
+
+    Returns
+    =======
+    Object: object of type GamessSurf.
     """
     
     def __init__(self,filepath):
@@ -36,7 +44,8 @@ class GamessSurf():
             self.points = self.loadGAMESSsurf()
             self.coor1, self.coor2 = self._getcoordef()
         else:
-            raise TypeError('File is not the output of a GamessUS surface calculation.')
+            raise TypeError(
+                'File is not the output of a GamessUS surface calculation.')
     
     def loadGAMESSsurf(self):
         file = open(self.filepath,'r')
@@ -63,6 +72,9 @@ class GamessSurf():
                 if count%100 == 0:
                     print('.',end='')
         file.close()
+        if count==0:
+            raise TypeError(
+                'File does not contain any GamessUS surface points/values.')
         return points
 
     def issurfcalc(self):
