@@ -1,12 +1,12 @@
 import setuptools
 
-with open("ReadMe.md", "r") as f:
+with open("Readme.md", "r") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="GamessUSReader",
-    url = "https://github.com/gutow/GamessUSReader",
-    version="0.9.0",
+    name="GamessUSUtilities",
+    url="https://github.com/gutow/GamessUSReader",
+    version="0.2.0",
     description="Utilities for reading and plotting GAMESSUS output",
     long_description=long_description,
     long_description_content_type="text/markdown",

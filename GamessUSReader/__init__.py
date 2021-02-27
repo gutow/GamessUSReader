@@ -1,1 +1,0 @@
-from GamessUSReader.GamessUSReader import *
